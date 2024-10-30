@@ -20,6 +20,10 @@ const express = require('express')
 const app = express()
 const host = 'http://127.0.0.1'
 const port = 3000
+const postsController = require('./controllers/postsController.js')
+const { posts } = require('./data/posts')
+
+app.use(express.static('public'))
 
 //-Creiamo il progetto base con una rotta / che ritorna un h1 con scritto Benvenuto nel mio blog!
 app.get ('/',(req,res)=>{
@@ -71,7 +75,7 @@ app.get ('/',(req,res)=>{
  */
 
   //La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
-  app.get('posts',postsController.index)
+  app.get('/posts', postsController.index)
 
 
   app.listen(port,()=>{
