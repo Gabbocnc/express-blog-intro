@@ -37,8 +37,11 @@ app.use(express.static('public'))
 
 //-Creiamo il progetto base con una rotta / che ritorna un h1 con scritto Benvenuto nel mio blog!
 app.get('/', (req, res) => {
-    res.send('<h1>Benvenuto nel mio blog!</h1>')
-})
+  res.send(`
+      <h1>Benvenuto nel mio blog!</h1>
+      <a class="guida" href="http://127.0.0.1:3000/posts.html" target="_blank">Visita il mio Blog</a>
+  `);
+});
 
 
 //-Creiamo un array dove inserire una lista di almeno 5 post, per ognuno indicare titolo, contenuto, immagine e tags (tags è un array di stringhe)
