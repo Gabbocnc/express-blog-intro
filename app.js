@@ -25,9 +25,7 @@ const port = 3000
 app.get ('/',(req,res)=>{
     res.send('<h1>Benvenuto nel mio blog!</h1>')
 })
-app.listen(port,()=>{
-    console.log(`Example app listening on port ${host}:${port}`)
-})
+
 
 //-Creiamo un array dove inserire una lista di almeno 5 post, per ognuno indicare titolo, contenuto, immagine e tags (tags è un array di stringhe)
 const posts = [
@@ -63,3 +61,15 @@ const posts = [
     }
   ];
   
+  //-Creiamo poi una rotta /posts che restituisca un oggetto json con la lista dei post e il conteggio, partendo da un array locale.
+  app.get('/posts',(req,res)=>{
+    res.json({
+        count : posts.length,
+        posts: posts
+    })
+  })
+
+
+  app.listen(port,()=>{
+    console.log(`Example app listening on port ${host}:${port}`)
+})
