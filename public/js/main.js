@@ -13,8 +13,9 @@ axios.get('http://127.0.0.1:3000/posts')
              <ul class="postEl">
                 <div class="titolo"><strong>${post.titolo}</strong><br></div>
                 <div class="contenuto">${post.contenuto}</div><br>
+                <a class="guida" href="${post.link}" target="_blank">Guida ${post.titolo}</a>
                 <div class="immagine"><img src="${post.immagine}" alt="" style="width:400px;"><br></div>
-                <div class="tags">${post.tags}</div><br>
+                <div class="tags"><strong>${post.tags.join('')}</strong></div><br>
             </ul>
         `
         myPost += markup

@@ -96,6 +96,7 @@ app.get('/posts-html', (req, res) => {
                     ${posts.map(post => `
                             <div><strong>${post.titolo}</strong><br></div>
                             <div>${post.contenuto}</div><br>
+                            <div><a class="guida" href="${post.link}" target="_blank">Guida</a></div>
                             <img src="${post.immagine}" alt="${post.titolo}" style="width:400px;"><br>
                             <div>Tags: ${post.tags}<br></div>
                     `).join('')}
