@@ -1,10 +1,5 @@
-
-
 const postEl = document.querySelector('.postEl')
-const titoloEl = document.querySelector('.titolo')
-const contenutoEl = document.querySelector('.contenuto')
-const immagineEl = document.querySelector('.immagine')
-const tagsEl = document.querySelector('.tags')
+
 
 axios.get('http://127.0.0.1:3000/posts')
     .then(response => {
