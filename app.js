@@ -16,6 +16,15 @@ Esercizio:
 -Testare nel browser.
 */
 
+/* 
+Bonus
+-Spostiamo l’array dei post in un file separato da importare poi dentro il controller
+
+-Creare una nuova rotta con cui stampare la lista in html come ul
+
+-Create una pagina statica html da cui far partire una chiamata ajax per consumare il vostro enpoint json.
+*/
+
 const express = require('express')
 const app = express()
 const host = 'http://127.0.0.1'
@@ -23,10 +32,11 @@ const port = 3000
 const postsController = require('./controllers/postsController.js')
 const { posts } = require('./data/posts')
 
+/* -Configuriamo gli asset statici sull’applicazione in modo che si possano visualizzare le immagini associate ad ogni post. */
 app.use(express.static('public'))
 
 //-Creiamo il progetto base con una rotta / che ritorna un h1 con scritto Benvenuto nel mio blog!
-app.get ('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send('<h1>Benvenuto nel mio blog!</h1>')
 })
 
@@ -64,8 +74,8 @@ app.get ('/',(req,res)=>{
       tags: ["produttività", "organizzazione", "lifestyle", "consigli"]
     }
   ]; */
-  
-  //-Creiamo poi una rotta /posts che restituisca un oggetto json con la lista dei post e il conteggio, partendo da un array locale.
+
+//-Creiamo poi una rotta /posts che restituisca un oggetto json con la lista dei post e il conteggio, partendo da un array locale.
 /*   app.get('/posts',(req,res)=>{
     res.json({
         count : posts.length,
@@ -74,11 +84,29 @@ app.get ('/',(req,res)=>{
   })
  */
 
-  //La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
-  app.get('/posts', postsController.index)
+//La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
+app.get('/posts', postsController.index)
 
 
-  app.listen(port,()=>{
+/*   -Creare una nuova rotta con cui stampare la lista in html come ul */
+app.get('/posts-html', (req, res) => {
+    const markup = ` 
+                <h1>Lista dei Post</h1>
+                <ul>
+                    ${posts.map(post => `
+                    
+                            <div><strong>${post.titolo}</strong><br></div>
+                            <div>${post.contenuto}</div><br>
+                            <img src="${post.immagine}" alt="${post.titolo}" style="width:400px;"><br>
+                            <div>Tags: ${post.tags}<br></div>
+                        
+                    `)}
+                </ul>
+        `
+    res.send(markup)
+})
+
+app.listen(port, () => {
     console.log(`Example app listening on port ${host}:${port}`)
 })
 
