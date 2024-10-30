@@ -39,7 +39,7 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   res.send(`
       <h1>Benvenuto nel mio blog!</h1>
-      <a class="guida" href="http://127.0.0.1:3000/posts.html" target="_blank">Visita il mio Blog</a>
+      <a href="http://127.0.0.1:3000/posts.html" target="_blank">Visita il mio Blog</a>
   `);
 });
 
