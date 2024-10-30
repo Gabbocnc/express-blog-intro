@@ -94,13 +94,11 @@ app.get('/posts-html', (req, res) => {
                 <h1>Lista dei Post</h1>
                 <ul>
                     ${posts.map(post => `
-                    
                             <div><strong>${post.titolo}</strong><br></div>
                             <div>${post.contenuto}</div><br>
                             <img src="${post.immagine}" alt="${post.titolo}" style="width:400px;"><br>
                             <div>Tags: ${post.tags}<br></div>
-                        
-                    `)}
+                    `).join('')}
                 </ul>
         `
     res.send(markup)
