@@ -28,7 +28,7 @@ app.get ('/',(req,res)=>{
 
 
 //-Creiamo un array dove inserire una lista di almeno 5 post, per ognuno indicare titolo, contenuto, immagine e tags (tags è un array di stringhe)
-const posts = [
+/* const posts = [
     {
       titolo: "Viaggio a Roma",
       contenuto: "Esperienze e consigli su come visitare Roma in tre giorni.",
@@ -59,17 +59,22 @@ const posts = [
       immagine: "tempo.webp",
       tags: ["produttività", "organizzazione", "lifestyle", "consigli"]
     }
-  ];
+  ]; */
   
   //-Creiamo poi una rotta /posts che restituisca un oggetto json con la lista dei post e il conteggio, partendo da un array locale.
-  app.get('/posts',(req,res)=>{
+/*   app.get('/posts',(req,res)=>{
     res.json({
         count : posts.length,
         posts: posts
     })
   })
+ */
+
+  //La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
+  app.get('posts',postsController.index)
 
 
   app.listen(port,()=>{
     console.log(`Example app listening on port ${host}:${port}`)
 })
+
