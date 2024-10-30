@@ -1,4 +1,4 @@
-const { response } = require("express")
+
 
 const postEl = document.querySelector('.postEl')
 const titoloEl = document.querySelector('.titolo')
@@ -8,7 +8,9 @@ const tagsEl = document.querySelector('.tags')
 
 axios.get('http://127.0.0.1:3000/posts')
     .then(response => {
-        const posts = response.data.posts
+        const posts = response.data.posts.posts
+        console.log(posts);
+        
         let myPost = ''
 
         posts.forEach(post => {
